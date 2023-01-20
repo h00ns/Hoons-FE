@@ -1,26 +1,26 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
+import React, { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 //  다국어 지원
-import { useTranslation } from 'next-i18next';
+import { useTranslation } from "next-i18next";
 
 //  style
-import styled from '@emotion/styled';
-import { primary, blue, gray, red, white, black } from '@styles/Colors';
-import { mq } from '@utils/style';
+import styled from "@emotion/styled";
+import { primary, blue, gray, red, white, black } from "@styles/Colors";
+import { mq } from "@utils/style";
 
 /**
  *  components
  */
 //  atoms
-import Typography from '@components/atoms/Typography';
+import Typography from "@components/atoms/Typography";
 
 //  icons
-import LineIcon from '@public/assets/icons/Line.svg';
-import LanguageIcon from '@public/assets/icons/Language.svg';
-import PersonIcon from '@public/assets/icons/Person.svg';
-import Divider from '@components/atoms/Divider';
+import LineIcon from "@public/assets/icons/Line.svg";
+import LanguageIcon from "@public/assets/icons/Language.svg";
+import PersonIcon from "@public/assets/icons/Person.svg";
+import Divider from "@components/atoms/Divider";
 
 interface Props {}
 
@@ -85,7 +85,7 @@ const ProfileModal = styled(Modal)`
   top: 64px;
   right: 96px;
 
-  ${mq['md']} {
+  ${mq["md"]} {
     top: 64px;
     right: 24px;
   }
@@ -113,13 +113,13 @@ const ModalRowItem = styled.div<{ center?: boolean }>`
 
 const Header: React.FC<Props> = ({}) => {
   const router = useRouter();
-  const { i18n, t } = useTranslation('common');
+  const { i18n, t } = useTranslation("common");
 
   const profileModalRef = useRef<any>(null);
   const languageModalRef = useRef<any>(null);
 
-  const [openModal, setOpenModal] = useState('');
-  const [language, setLanguage] = useState('ko');
+  const [openModal, setOpenModal] = useState("");
+  const [language, setLanguage] = useState("ko");
   const [loginStatus, setLoginStatus] = useState(false);
 
   useEffect(() => {
@@ -131,17 +131,19 @@ const Header: React.FC<Props> = ({}) => {
         languageModalRef.current &&
         !languageModalRef.current.contains(e.target as Node)
       ) {
-        setOpenModal('');
+        setOpenModal("");
       }
     }
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
 
     // language 세팅이 되어 있으면
-    const lang = localStorage.getItem('lang') || router?.locale || 'ko';
+    const lang = localStorage.getItem("lang") || router?.locale || "ko";
 
     // 최근 language 셋팅 기준으로 라우팅
     if (lang !== router?.locale) {
-      router.push(`/${lang}${router.asPath}`, `/${lang}${router.asPath}`, { locale: lang });
+      router.push(`/${lang}${router.asPath}`, `/${lang}${router.asPath}`, {
+        locale: lang,
+      });
     }
 
     if (lang) {
@@ -149,7 +151,7 @@ const Header: React.FC<Props> = ({}) => {
     }
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
@@ -158,9 +160,24 @@ const Header: React.FC<Props> = ({}) => {
    *  language 로컬스토리지 셋팅 및 라우팅 function
    */
   const handleStorageLanguageSet = (lang: string) => {
-    localStorage.setItem('lang', lang);
-    router.push(`/${lang}${router.asPath}`, `/${lang}${router.asPath}`, { locale: lang });
+    localStorage.setItem("lang", lang);
+    router.push(`/${lang}${router.asPath}`, `/${lang}${router.asPath}`, {
+      locale: lang,
+    });
   };
+
+  // Modal Open 이벤트 핸들링
+  // const handleModalOpen = ({
+  //   modalType,
+  // }: {
+  //   modalType: "profile" | "noti" | "language";
+  // }) => {
+  //   if (modalType === openModal) {
+  //     setOpenModal("");
+  //   } else {
+  //     setOpenModal(modalType);
+  //   }
+  // };
 
   return (
     <HeaderWrapper>
@@ -176,14 +193,14 @@ const Header: React.FC<Props> = ({}) => {
       <ContentWrapper>
         {/* 로그인 여부 */}
         {loginStatus ? (
-          <IconWrapper pointer onClick={() => setOpenModal('profile')}>
+          <IconWrapper pointer onClick={() => setOpenModal("profile")}>
             <PersonIcon fill={white} />
           </IconWrapper>
         ) : (
           <Link href="/auth/login">
             <a>
               <Typography variant="sh4" color={white}>
-                {t('header.login')}
+                {t("header.login")}
               </Typography>
             </a>
           </Link>
@@ -192,13 +209,13 @@ const Header: React.FC<Props> = ({}) => {
         <IconWrapper>
           <LineIcon fill={white} />
         </IconWrapper>
-        <IconWrapper pointer onClick={() => setOpenModal('language')}>
+        <IconWrapper pointer onClick={() => setOpenModal("language")}>
           <LanguageIcon fill={white} />
         </IconWrapper>
       </ContentWrapper>
 
       {/* profile modal */}
-      <ProfileModal open={openModal === 'profile'} ref={profileModalRef}>
+      <ProfileModal open={openModal === "profile"} ref={profileModalRef}>
         <ModalRowItem>
           <Typography variant="sh3" color={primary.gray}>
             안녕하세요 ! ㅇㅇㅇ 님
@@ -232,14 +249,20 @@ const Header: React.FC<Props> = ({}) => {
       {/* profile modal end */}
 
       {/* language modal */}
-      <LanguageModal open={openModal === 'language'} ref={languageModalRef}>
-        <ModalRowItem onClick={() => handleStorageLanguageSet('ko')}>
-          <Typography variant="sh3" color={language === 'ko' ? primary.blue : gray.gray5}>
+      <LanguageModal open={openModal === "language"} ref={languageModalRef}>
+        <ModalRowItem onClick={() => handleStorageLanguageSet("ko")}>
+          <Typography
+            variant="sh3"
+            color={language === "ko" ? primary.blue : gray.gray5}
+          >
             한국어
           </Typography>
         </ModalRowItem>
-        <ModalRowItem onClick={() => handleStorageLanguageSet('en')}>
-          <Typography variant="sh3" color={language === 'en' ? primary.blue : gray.gray5}>
+        <ModalRowItem onClick={() => handleStorageLanguageSet("en")}>
+          <Typography
+            variant="sh3"
+            color={language === "en" ? primary.blue : gray.gray5}
+          >
             English
           </Typography>
         </ModalRowItem>
