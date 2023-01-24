@@ -22,6 +22,8 @@ import SideBar from "@components/organisms/SideBar";
 import ServiceContent from "@components/templetes/ServiceContent";
 
 const Container = styled.div`
+  min-height: 1000px;
+
   display: grid;
   grid-template-columns: 280px 1fr;
 

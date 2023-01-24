@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
@@ -15,6 +15,7 @@ import { useTranslation } from "next-i18next";
  */
 //  atoms
 import Typography from "@components/atoms/Typography";
+import { useGetItemsFetch } from "@hooks/fetch/useServiceFetch";
 
 interface Props {}
 
@@ -38,7 +39,8 @@ const ContentItem = styled.div`
   cursor: pointer;
 
   ${mq["md"]} {
-    width: 320px;
+    width: 100%;
+    max-width: 380px;
     margin: 0 auto;
   }
 `;
@@ -57,23 +59,28 @@ const ServiceContent: React.FC<Props> = ({}) => {
   const { i18n, t } = useTranslation("auth");
   const ko = i18n.language === "ko";
 
+  const { getItemsFetchData } = useGetItemsFetch();
+
+  const parseCommaPrice = (str: string) => {
+    return str.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
   return (
     <ServiceContentWrapper>
-      {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 78, 9, 0].map(
-        (item) => (
-          <ContentItem onClick={() => router.push("/service/detail")}>
-            <ImageWrapper>
-              <Image src="/assets/images/dunk.png" layout="fill" />
-            </ImageWrapper>
-            <Typography variant="sh3" color={primary.gray}>
-              Nike Dunk Row Retro
-            </Typography>
-            <Typography variant="b4" color={primary.gray}>
-              129,000{ko ? "원" : " KRW"}
-            </Typography>
-          </ContentItem>
-        )
-      )}
+      {getItemsFetchData?.data.item.map((item: any) => (
+        <ContentItem onClick={() => router.push("/service/detail")}>
+          <ImageWrapper>
+            <Image src={item.image} layout="fill" />
+          </ImageWrapper>
+          <Typography variant="sh3" color={primary.gray}>
+            {item.name}
+          </Typography>
+          <Typography variant="b4" color={primary.gray}>
+            {parseCommaPrice(item.price)}
+            {ko ? "원" : " KRW"}
+          </Typography>
+        </ContentItem>
+      ))}
     </ServiceContentWrapper>
   );
 };
