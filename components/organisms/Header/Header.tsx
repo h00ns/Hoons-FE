@@ -120,7 +120,7 @@ const Header: React.FC<Props> = ({}) => {
 
   const [openModal, setOpenModal] = useState("");
   const [language, setLanguage] = useState("ko");
-  const [loginStatus, setLoginStatus] = useState(false);
+  const [loginStatus, setLoginStatus] = useState(true);
 
   useEffect(() => {
     // 마우스 이벤트 핸들링 (모달 close)
@@ -165,19 +165,6 @@ const Header: React.FC<Props> = ({}) => {
       locale: lang,
     });
   };
-
-  // Modal Open 이벤트 핸들링
-  // const handleModalOpen = ({
-  //   modalType,
-  // }: {
-  //   modalType: "profile" | "noti" | "language";
-  // }) => {
-  //   if (modalType === openModal) {
-  //     setOpenModal("");
-  //   } else {
-  //     setOpenModal(modalType);
-  //   }
-  // };
 
   return (
     <HeaderWrapper>

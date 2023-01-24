@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 //  style
-import styled from '@emotion/styled';
-import { primary, blue, gray, red, white, black } from '@styles/Colors';
-import { mq } from '@utils/style';
-import SearchInput from '@components/molecules/SearchInput/SearchInput';
-import Typography from '@components/atoms/Typography';
+import styled from "@emotion/styled";
+import { primary, blue, gray, red, white, black } from "@styles/Colors";
+import { mq } from "@utils/style";
+import SearchInput from "@components/molecules/SearchInput/SearchInput";
+import Typography from "@components/atoms/Typography";
 
 interface Props {}
 
@@ -15,7 +15,7 @@ const SideBarWrapper = styled.div<Props>`
   padding: 80px 24px 24px;
   border-right: 1px solid ${gray.gray4};
 
-  ${mq['md']} {
+  ${mq["md"]} {
     width: 100%;
     height: 320px;
     border-right: none;
@@ -34,7 +34,7 @@ const ContentWrapper = styled.div`
 
   overflow-y: auto;
 
-  ${mq['md']} {
+  ${mq["md"]} {
     max-height: 132px;
   }
 `;
@@ -45,9 +45,19 @@ const ContentItem = styled.div`
 
 const SideBar: React.FC<Props> = ({}) => {
   const [form, setForm] = useState({
-    search: '',
+    search: "",
   });
-  const [selectCategory, setSelectCategory] = useState('');
+  const [selectCategory, setSelectCategory] = useState("");
+  const category = [
+    "Nike",
+    "New Balance",
+    "Asics",
+    "Vans",
+    "Dunk",
+    "Jordan",
+    "Converse",
+    "Dr.Martens",
+  ];
 
   /**
    *  @function
@@ -67,7 +77,7 @@ const SideBar: React.FC<Props> = ({}) => {
    */
   const handleCategoryClick = (value: string) => {
     if (selectCategory === value) {
-      setSelectCategory('');
+      setSelectCategory("");
       return;
     }
 
@@ -79,25 +89,39 @@ const SideBar: React.FC<Props> = ({}) => {
    *  검색 function
    */
   const handleFormSubmit = () => {
-    console.log('click');
+    const value = form.search;
+
+    category.forEach((item) => {
+      if (item.toUpperCase() === value.toUpperCase()) {
+        setSelectCategory(item);
+      }
+    });
+
+    setForm((prev) => ({
+      ...prev,
+      search: "",
+    }));
   };
   return (
     <SideBarWrapper>
       <SearchBox>
         <SearchInput
           textInput={{
-            name: 'search',
+            name: "search",
             value: form.search,
-            placeholder: '검색어를 입력해보세요.',
+            placeholder: "검색어를 입력해보세요.",
             onChange: handleFormChange,
           }}
           onClick={handleFormSubmit}
         />
       </SearchBox>
       <ContentWrapper>
-        {['Nike', 'New Balance', 'Asics', 'Vans', 'Dunk', 'Jordan', 'Converse', 'Dr.Martens'].map((item: string) => (
+        {category.map((item: string) => (
           <ContentItem onClick={() => handleCategoryClick(item)} key={item}>
-            <Typography variant="b2" color={selectCategory === item ? primary.gray : gray.gray4}>
+            <Typography
+              variant="b2"
+              color={selectCategory === item ? primary.gray : gray.gray4}
+            >
               {item}
             </Typography>
           </ContentItem>

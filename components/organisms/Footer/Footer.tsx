@@ -1,15 +1,20 @@
-import Link from 'next/link';
-import React, { useState, useEffect } from 'react';
+import Link from "next/link";
+import React, { useState, useEffect } from "react";
 
 //  style
-import styled from '@emotion/styled';
-import { primary, blue, gray, red, white, black } from '@styles/Colors';
-import { mq } from '@utils/style';
-import Typography from '@components/atoms/Typography';
+import styled from "@emotion/styled";
+import { primary, blue, gray, red, white, black } from "@styles/Colors";
+import { mq } from "@utils/style";
+
+/**
+ *  Components
+ */
+//  atoms
+import Typography from "@components/atoms/Typography";
 
 interface Props {}
 
-const FooterWrapper = styled.div<Props>`
+const FooterWrapper = styled.div`
   width: 100%;
   min-height: 200px;
   padding: 24px;
@@ -21,7 +26,7 @@ const FooterWrapper = styled.div<Props>`
   flex-wrap: wrap;
   row-gap: 24px;
 
-  ${mq['md']} {
+  ${mq["md"]} {
     flex-direction: column;
   }
 `;

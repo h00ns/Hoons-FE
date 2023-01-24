@@ -1,31 +1,31 @@
-import type { NextPage } from 'next';
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
+import type { NextPage } from "next";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 //  다국어 지원
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 //  style
-import styled from '@emotion/styled';
-import { primary, blue, gray, red, white, black } from '@styles/Colors';
-import { mq } from '@utils/style';
+import styled from "@emotion/styled";
+import { primary, blue, gray, red, white, black } from "@styles/Colors";
+import { mq } from "@utils/style";
 
 /**
  *  components
  */
 //  atoms
-import Typography from '@components/atoms/Typography';
-import TextInput from '@components/atoms/TextInput';
-import Button from '@components/atoms/Button';
+import Typography from "@components/atoms/Typography";
+import TextInput from "@components/atoms/TextInput";
+import Button from "@components/atoms/Button";
 //  organisms
-import Header from '@components/organisms/Header';
+import Header from "@components/organisms/Header";
 //  templates
-import DefaultTemplate from '@components/templetes/DefaultTemplate';
+import DefaultTemplate from "@components/templetes/DefaultTemplate";
 
 //  fetch hooks
-import { useLoginFetch } from '@hooks/fetch/useAuthFetch';
+import { useLoginFetch } from "@hooks/fetch/useAuthFetch";
 
 const LoginWrapper = styled.div`
   width: 100%;
@@ -33,7 +33,7 @@ const LoginWrapper = styled.div`
   padding: 136px 0;
   margin: 0 auto;
 
-  ${mq['md']} {
+  ${mq["md"]} {
     max-width: 320px;
     padding: 104px 0;
   }
@@ -63,11 +63,11 @@ interface FormTypes {
 
 const Login: NextPage = () => {
   const router = useRouter();
-  const { i18n, t } = useTranslation('auth');
+  const { i18n, t } = useTranslation("auth");
 
   const [form, setForm] = useState<FormTypes>({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
 
   const { loginFetchMutate, loginFetchStatus } = useLoginFetch();
@@ -96,8 +96,8 @@ const Login: NextPage = () => {
   };
 
   useEffect(() => {
-    if (loginFetchStatus === 'success') {
-      router.push('/');
+    if (loginFetchStatus === "success") {
+      router.push("/");
     }
   }, [loginFetchStatus]);
 
@@ -106,30 +106,30 @@ const Login: NextPage = () => {
       <LoginWrapper>
         <TitleWrapper>
           <Typography variant="sh1" color={primary.gray}>
-            {t('login.title')}
+            {t("login.title")}
           </Typography>
         </TitleWrapper>
         <LoginFormWrapper>
           <TextInput
             name="email"
             value={form.email}
-            placeholder={t('login.placeholder1')}
+            placeholder={t("login.placeholder1")}
             onChange={handleFormChange}
           />
           <TextInput
             name="password"
             value={form.password}
             type="password"
-            placeholder={t('login.placeholder2')}
+            placeholder={t("login.placeholder2")}
             onChange={handleFormChange}
           />
         </LoginFormWrapper>
-        <Button label={t('login.button1')} onClick={handleFormSubmit} />
+        <Button label={t("login.button1")} onClick={handleFormSubmit} />
         <RegisterButton>
           <Link href="/auth/register">
             <a>
               <Typography variant="sh4" color={gray.gray6}>
-                {t('login.button2')}
+                {t("login.button2")}
               </Typography>
             </a>
           </Link>
@@ -141,7 +141,7 @@ const Login: NextPage = () => {
 
 export const getStaticProps = async ({ locale }: any) => ({
   props: {
-    ...(await serverSideTranslations(locale, ['common', 'auth'])),
+    ...(await serverSideTranslations(locale, ["common", "auth"])),
   },
 });
 
