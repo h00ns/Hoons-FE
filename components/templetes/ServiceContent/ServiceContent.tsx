@@ -39,8 +39,7 @@ const ContentItem = styled.div`
   cursor: pointer;
 
   ${mq["md"]} {
-    width: 100%;
-    max-width: 380px;
+    width: 320px;
     margin: 0 auto;
   }
 `;
@@ -61,7 +60,11 @@ const ServiceContent: React.FC<Props> = ({}) => {
 
   const { getItemsFetchData } = useGetItemsFetch();
 
-  const parseCommaPrice = (str: string) => {
+  /**
+   *  @function
+   *  숫자 콤마처리 function
+   */
+  const returnCommaPrice = (str: string) => {
     return str.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
 
@@ -76,7 +79,7 @@ const ServiceContent: React.FC<Props> = ({}) => {
             {item.name}
           </Typography>
           <Typography variant="b4" color={primary.gray}>
-            {parseCommaPrice(item.price)}
+            {returnCommaPrice(item.price)}
             {ko ? "원" : " KRW"}
           </Typography>
         </ContentItem>

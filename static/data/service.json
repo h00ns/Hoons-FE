@@ -4,73 +4,37 @@
         {
           "image": "/assets/images/dunk1.png",
           "name": "Nike Dunk Row White Black",
-          "price": "129000",
-          "category": "Nike"
-        },
-        {
-          "image": "/assets/images/dunk1.png",
-          "name": "Nike Dunk Row White Black",
-          "price": "129000",
-          "category": "Nike"
-        },
-        {
-          "image": "/assets/images/dunk1.png",
-          "name": "Nike Dunk Row White Black",
-          "price": "129000",
-          "category": "Nike"
-        },
-        {
-          "image": "/assets/images/dunk1.png",
-          "name": "Nike Dunk Row White Black",
-          "price": "129000",
-          "category": "Nike"
-        },
-        {
-          "image": "/assets/images/dunk1.png",
-          "name": "Nike Dunk Row White Black",
-          "price": "129000",
-          "category": "Nike"
-        },
-        {
-          "image": "/assets/images/dunk1.png",
-          "name": "Nike Dunk Row White Black",
-          "price": "129000",
-          "category": "Nike"
-        },
-        {
-          "image": "/assets/images/dunk1.png",
-          "name": "Nike Dunk Row White Black",
-          "price": "129000",
-          "category": "Nike"
-        },
-        {
-          "image": "/assets/images/dunk1.png",
-          "name": "Nike Dunk Row White Black",
-          "price": "129000",
-          "category": "Nike"
-        },
-        {
-          "image": "/assets/images/dunk1.png",
-          "name": "Nike Dunk Row White Black",
-          "price": "129000",
-          "category": "Nike"
-        },
-        {
-          "image": "/assets/images/dunk1.png",
-          "name": "Nike Dunk Row White Black",
-          "price": "129000",
-          "category": "Nike"
-        },
-        {
-          "image": "/assets/images/dunk1.png",
-          "name": "Nike Dunk Row White Black",
-          "price": "129000",
+          "price": "147000",
           "category": "Nike"
         },
         {
           "image": "/assets/images/dunk2.png",
           "name": "Nike Dunk Row Smoke Gray",
-          "price": "129000",
+          "price": "165000",
+          "category": "Nike"
+        },
+        {
+          "image": "/assets/images/dunk3.png",
+          "name": "Nike Dunk Row Gym Red",
+          "price": "168000",
+          "category": "Nike"
+        },
+        {
+          "image": "/assets/images/dunk4.png",
+          "name": "Nike Dunk Row Varsity Royal",
+          "price": "199500",
+          "category": "Nike"
+        },
+        {
+          "image": "/assets/images/dunk5.png",
+          "name": "Nike Dunk Row Halloween",
+          "price": "240000",
+          "category": "Nike"
+        },
+        {
+          "image": "/assets/images/dunk6.png",
+          "name": "Nike Dunk Row Seoul",
+          "price": "225000",
           "category": "Nike"
         }
       ]
