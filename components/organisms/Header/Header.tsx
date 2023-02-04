@@ -23,6 +23,7 @@ import PersonIcon from "@public/assets/icons/Person.svg";
 import Divider from "@components/atoms/Divider";
 
 import { TypoVariant } from "../../../constants";
+import { HOME, LOGIN, LOGOUT, MANAGE } from "constants/route";
 
 interface Props {}
 
@@ -171,7 +172,7 @@ const Header: React.FC<Props> = ({}) => {
   return (
     <HeaderWrapper>
       <LogoWrapper>
-        <Link href="/">
+        <Link href={HOME}>
           <a>
             <Typography variant={TypoVariant.SH2} color={white}>
               Hoons
@@ -186,7 +187,7 @@ const Header: React.FC<Props> = ({}) => {
             <PersonIcon fill={white} />
           </IconWrapper>
         ) : (
-          <Link href="/auth/login">
+          <Link href={LOGIN}>
             <a>
               <Typography variant={TypoVariant.SH4} color={white}>
                 {t("header.login")}
@@ -211,7 +212,7 @@ const Header: React.FC<Props> = ({}) => {
           </Typography>
         </ModalRowItem>
         <ModalRowItem>
-          <Link href="/manage">
+          <Link href={MANAGE}>
             <a>
               <Typography variant={TypoVariant.B3} color={primary.gray}>
                 관리페이지
@@ -226,7 +227,7 @@ const Header: React.FC<Props> = ({}) => {
         </ModalRowItem>
         <Divider />
         <ModalRowItem center>
-          <Link href="/auth/logout">
+          <Link href={LOGOUT}>
             <a>
               <Typography variant={TypoVariant.SH3} color={gray.gray5}>
                 로그아웃
