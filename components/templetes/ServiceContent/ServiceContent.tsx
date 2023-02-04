@@ -17,6 +17,8 @@ import { useTranslation } from "next-i18next";
 import Typography from "@components/atoms/Typography";
 import { useGetItemsFetch } from "@hooks/fetch/useServiceFetch";
 
+import { TypoVariant } from "../../../constants";
+
 interface Props {}
 
 const ServiceContentWrapper = styled.div`
@@ -75,10 +77,10 @@ const ServiceContent: React.FC<Props> = ({}) => {
           <ImageWrapper>
             <Image src={item.image} layout="fill" />
           </ImageWrapper>
-          <Typography variant="sh3" color={primary.gray}>
+          <Typography variant={TypoVariant.SH3} color={primary.gray}>
             {item.name}
           </Typography>
-          <Typography variant="b4" color={primary.gray}>
+          <Typography variant={TypoVariant.B4} color={primary.gray}>
             {returnCommaPrice(item.price)}
             {ko ? "원" : " KRW"}
           </Typography>

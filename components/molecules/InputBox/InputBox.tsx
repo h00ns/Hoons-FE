@@ -1,14 +1,16 @@
-import React from 'react';
-import styled from '@emotion/styled';
+import React from "react";
+import styled from "@emotion/styled";
 
-import { primary, blue, gray, red, white, black } from '@styles/Colors';
+import { primary, blue, gray, red, white, black } from "@styles/Colors";
 
 /**
  *  components
  */
 //  atoms
-import Typography from '@components/atoms/Typography';
-import TextInput from '@components/atoms/TextInput';
+import Typography from "@components/atoms/Typography";
+import TextInput from "@components/atoms/TextInput";
+
+import { TypoVariant } from "../../../constants";
 
 type Props = {
   textInput: TextInput;
@@ -16,7 +18,7 @@ type Props = {
 };
 
 type TextInput = {
-  variant?: 'default' | 'error';
+  variant?: "default" | "error";
   width?: string;
   placeholder?: string;
   name?: string;
@@ -39,7 +41,7 @@ const InputBox: React.FC<Props> = ({ textInput, title }) => {
         {/* label */}
         <>
           {title && (
-            <Typography variant="sh3" color={primary.gray}>
+            <Typography variant={TypoVariant.SH3} color={primary.gray}>
               {title}
             </Typography>
           )}

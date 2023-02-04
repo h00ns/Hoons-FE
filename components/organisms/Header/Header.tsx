@@ -22,6 +22,8 @@ import LanguageIcon from "@public/assets/icons/Language.svg";
 import PersonIcon from "@public/assets/icons/Person.svg";
 import Divider from "@components/atoms/Divider";
 
+import { TypoVariant } from "../../../constants";
+
 interface Props {}
 
 const HeaderWrapper = styled.div<Props>`
@@ -171,7 +173,7 @@ const Header: React.FC<Props> = ({}) => {
       <LogoWrapper>
         <Link href="/">
           <a>
-            <Typography variant="sh2" color={white}>
+            <Typography variant={TypoVariant.SH2} color={white}>
               Hoons
             </Typography>
           </a>
@@ -186,7 +188,7 @@ const Header: React.FC<Props> = ({}) => {
         ) : (
           <Link href="/auth/login">
             <a>
-              <Typography variant="sh4" color={white}>
+              <Typography variant={TypoVariant.SH4} color={white}>
                 {t("header.login")}
               </Typography>
             </a>
@@ -204,21 +206,21 @@ const Header: React.FC<Props> = ({}) => {
       {/* profile modal */}
       <ProfileModal open={openModal === "profile"} ref={profileModalRef}>
         <ModalRowItem>
-          <Typography variant="sh3" color={primary.gray}>
+          <Typography variant={TypoVariant.SH3} color={primary.gray}>
             안녕하세요 ! ㅇㅇㅇ 님
           </Typography>
         </ModalRowItem>
         <ModalRowItem>
           <Link href="/manage">
             <a>
-              <Typography variant="b3" color={primary.gray}>
+              <Typography variant={TypoVariant.B3} color={primary.gray}>
                 관리페이지
               </Typography>
             </a>
           </Link>
         </ModalRowItem>
         <ModalRowItem>
-          <Typography variant="b3" color={primary.gray}>
+          <Typography variant={TypoVariant.B3} color={primary.gray}>
             장바구니
           </Typography>
         </ModalRowItem>
@@ -226,7 +228,7 @@ const Header: React.FC<Props> = ({}) => {
         <ModalRowItem center>
           <Link href="/auth/logout">
             <a>
-              <Typography variant="sh3" color={gray.gray5}>
+              <Typography variant={TypoVariant.SH3} color={gray.gray5}>
                 로그아웃
               </Typography>
             </a>
@@ -239,7 +241,7 @@ const Header: React.FC<Props> = ({}) => {
       <LanguageModal open={openModal === "language"} ref={languageModalRef}>
         <ModalRowItem onClick={() => handleStorageLanguageSet("ko")}>
           <Typography
-            variant="sh3"
+            variant={TypoVariant.SH3}
             color={language === "ko" ? primary.blue : gray.gray5}
           >
             한국어
@@ -247,7 +249,7 @@ const Header: React.FC<Props> = ({}) => {
         </ModalRowItem>
         <ModalRowItem onClick={() => handleStorageLanguageSet("en")}>
           <Typography
-            variant="sh3"
+            variant={TypoVariant.SH3}
             color={language === "en" ? primary.blue : gray.gray5}
           >
             English

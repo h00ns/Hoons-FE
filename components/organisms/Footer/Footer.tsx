@@ -12,6 +12,8 @@ import { mq } from "@utils/style";
 //  atoms
 import Typography from "@components/atoms/Typography";
 
+import { TypoVariant } from "../../../constants";
+
 interface Props {}
 
 const FooterWrapper = styled.div`
@@ -41,62 +43,62 @@ const Footer: React.FC<Props> = ({}) => {
   return (
     <FooterWrapper>
       <FooterBlock>
-        <Typography variant="sh1" color={white}>
+        <Typography variant={TypoVariant.SH1} color={white}>
           Hoons
         </Typography>
-        <Typography variant="b4" color={gray.gray4}>
+        <Typography variant={TypoVariant.B4} color={gray.gray4}>
           만든이 : hoon
         </Typography>
-        <Typography variant="b4" color={gray.gray4}>
+        <Typography variant={TypoVariant.B4} color={gray.gray4}>
           FE : Next.js
         </Typography>
-        <Typography variant="b4" color={gray.gray4}>
+        <Typography variant={TypoVariant.B4} color={gray.gray4}>
           BE : Nest.js
         </Typography>
       </FooterBlock>
       <FooterBlock>
-        <Typography variant="sh1" color={white}>
+        <Typography variant={TypoVariant.SH1} color={white}>
           Github
         </Typography>
         <Link href="https://github.com/h00ns/h00ns-project">
           <a target="_blank">
-            <Typography variant="b4" color={gray.gray4}>
+            <Typography variant={TypoVariant.B4} color={gray.gray4}>
               Visit
             </Typography>
           </a>
         </Link>
       </FooterBlock>
       <FooterBlock>
-        <Typography variant="sh1" color={white}>
+        <Typography variant={TypoVariant.SH1} color={white}>
           Velog
         </Typography>
         <Link href="https://velog.io/@hoooons">
           <a target="_blank">
-            <Typography variant="b4" color={gray.gray4}>
+            <Typography variant={TypoVariant.B4} color={gray.gray4}>
               Visit
             </Typography>
           </a>
         </Link>
       </FooterBlock>
       <FooterBlock>
-        <Typography variant="sh1" color={white}>
+        <Typography variant={TypoVariant.SH1} color={white}>
           Notion
         </Typography>
         <Link href="https://velog.io/@hoooons">
           <a target="_blank">
-            <Typography variant="b4" color={gray.gray4}>
+            <Typography variant={TypoVariant.B4} color={gray.gray4}>
               Visit
             </Typography>
           </a>
         </Link>
       </FooterBlock>
       <FooterBlock>
-        <Typography variant="sh1" color={white}>
+        <Typography variant={TypoVariant.B4} color={white}>
           SNS
         </Typography>
         <Link href="https://www.instagram.com/h0000n_/">
           <a target="_blank">
-            <Typography variant="b4" color={gray.gray4}>
+            <Typography variant={TypoVariant.B4} color={gray.gray4}>
               Instagram
             </Typography>
           </a>

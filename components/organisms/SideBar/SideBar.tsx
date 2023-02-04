@@ -7,6 +7,8 @@ import { mq } from "@utils/style";
 import SearchInput from "@components/molecules/SearchInput/SearchInput";
 import Typography from "@components/atoms/Typography";
 
+import { TypoVariant } from "../../../constants";
+
 interface Props {}
 
 const SideBarWrapper = styled.div<Props>`
@@ -119,7 +121,7 @@ const SideBar: React.FC<Props> = ({}) => {
         {category.map((item: string) => (
           <ContentItem onClick={() => handleCategoryClick(item)} key={item}>
             <Typography
-              variant="b2"
+              variant={TypoVariant.B2}
               color={selectCategory === item ? primary.gray : gray.gray4}
             >
               {item}

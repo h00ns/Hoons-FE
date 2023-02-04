@@ -1,11 +1,14 @@
-import React from 'react';
-import styled from '@emotion/styled';
+import React from "react";
+import styled from "@emotion/styled";
 
-import { primary, blue, gray, red, white, black } from '@styles/Colors';
-import Typography from '../Typography';
+import { primary, blue, gray, red, white, black } from "@styles/Colors";
+
+import Typography from "../Typography";
+
+import { TypoVariant } from "../../../constants";
 
 interface Props {
-  variant?: 'default' | 'error';
+  variant?: "default" | "error";
   width?: string;
   placeholder?: string;
   name?: string;
@@ -20,7 +23,7 @@ interface Props {
 }
 
 const TextInput = styled.input<Props>`
-  width: ${(props) => props.width || '100%'};
+  width: ${(props) => props.width || "100%"};
   height: 48px;
   padding: 0 16px;
   font-size: 14px;
@@ -40,7 +43,7 @@ const TextInput = styled.input<Props>`
 
   /* error input */
   ${(props) =>
-    props.variant === 'error' &&
+    props.variant === "error" &&
     `
     border: 1px solid ${red.red3};
     color: ${red.red3};
@@ -64,8 +67,8 @@ const ErrorMessageWrapper = styled.div`
 `;
 
 const TextInputComponent: React.FC<Props> = ({
-  variant = 'default',
-  type = 'text',
+  variant = "default",
+  type = "text",
   width,
   placeholder,
   name,
@@ -90,9 +93,9 @@ const TextInputComponent: React.FC<Props> = ({
         onBlur={onBlur}
         isSearch={isSearch}
       />
-      {variant === 'error' && errorMessage && (
+      {variant === "error" && errorMessage && (
         <ErrorMessageWrapper>
-          <Typography variant="b5" color={red.red3}>
+          <Typography variant={TypoVariant.B5} color={red.red3}>
             {errorMessage}
           </Typography>
         </ErrorMessageWrapper>

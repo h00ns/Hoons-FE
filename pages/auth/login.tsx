@@ -27,6 +27,8 @@ import DefaultTemplate from "@components/templetes/DefaultTemplate";
 //  fetch hooks
 import { useLoginFetch } from "@hooks/fetch/useAuthFetch";
 
+import { TypoVariant } from "../../constants";
+
 const LoginWrapper = styled.div`
   width: 100%;
   max-width: 345px;
@@ -105,7 +107,7 @@ const Login: NextPage = () => {
     <DefaultTemplate header={<Header />} footer={null}>
       <LoginWrapper>
         <TitleWrapper>
-          <Typography variant="sh1" color={primary.gray}>
+          <Typography variant={TypoVariant.SH1} color={primary.gray}>
             {t("login.title")}
           </Typography>
         </TitleWrapper>
@@ -128,7 +130,7 @@ const Login: NextPage = () => {
         <RegisterButton>
           <Link href="/auth/register">
             <a>
-              <Typography variant="sh4" color={gray.gray6}>
+              <Typography variant={TypoVariant.SH4} color={gray.gray6}>
                 {t("login.button2")}
               </Typography>
             </a>
